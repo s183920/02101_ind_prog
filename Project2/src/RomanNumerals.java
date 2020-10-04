@@ -4,14 +4,27 @@ public class RomanNumerals {
     public static void main(String[] args) {
         String ones = "IXCM ";
         String fives = "VLD ";
+        String numeral;
         System.out.print("Enter positive integer to convert: ");
         Scanner numeralConsole = new Scanner(System.in);
-        String numeral = numeralConsole.next();
+        if (numeralConsole.hasNextInt()){
+            numeral = numeralConsole.next();
+            if(Integer.parseInt(numeral) <= 0){throw new IllegalArgumentException("The input must be a positive integer!");}
+        } else {
+            throw new IllegalArgumentException("The input must be an integer!");
+        }
+
         int l = numeral.length()-1;
+        int thousands = Integer.parseInt(numeral.substring(0, l-2));
+        if (thousands > 3){
+            for (int i = 0; i < thousands-3; i++){
+                System.out.print("M");
+            }
+            numeral = String.valueOf(Integer.parseInt(numeral)-(thousands-3)*1000);
+        }
         for (int i = 0; i <= l; i++){
             sub(""+numeral.charAt(i), ""+ ones.charAt(l-i) + fives.charAt(l-i) + ones.charAt(l-i+1));
         }
-
     }
 
     public static void sub(String num, String letters){
