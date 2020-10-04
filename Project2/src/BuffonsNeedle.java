@@ -3,15 +3,15 @@ import java.util.*;
 public class BuffonsNeedle {
     public static void main(String[] args) {
         // define variables
-        int iter, succes = 0;
+        long iter, succes = 0;
         Random distance = new Random(), angle = new Random();
         float d, a;
 
         // get number of iterations and make sure it is a positive integer
         Scanner console = new Scanner(System.in);
         System.out.print("Enter number of iterations: ");
-        if (console.hasNextInt()) {
-            iter = console.nextInt();
+        if (console.hasNextLong()) {
+            iter = console.nextLong();
             if (iter <= 0){
                 throw new IllegalArgumentException("Number of iterations must be a positive integer");
             }
