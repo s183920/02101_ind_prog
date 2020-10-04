@@ -8,7 +8,7 @@ public class Palindrome {
         Process_palindrome(sentence);
     }
     public static void Process_palindrome(String sentence) { //Ryd vores dug. Ret dog netgardinet. Tak, Egil. Viggo, gid da denne dame så de samer af dem, der red med fare, mase dåsemaden ned ad dig. Og giv lige katten i dragten godter. Gud se, rovdyr!
-        String result = sentence.replaceAll("[-+.^:,!]","").toLowerCase();
+        String result = sentence.replaceAll("[-+.^:,! ]","").toLowerCase();
         final int mid = result.length() / 2; //get the middle of the String
         if (mid == 0) {
             System.out.print("You did not input anything... try again");
@@ -16,20 +16,20 @@ public class Palindrome {
         else {
             if (mid % 2 == 0) {
                 String[] parts = {result.substring(0, mid), result.substring(mid)};
-                String s1 = parts[0].replaceAll("[ ]", "");
-                String s2 = parts[1].replaceAll("[ ]", "");
-                String s3 = new StringBuilder(s2).reverse().toString();
-                Check_palindrome(sentence, s1, s3);
+                String s1 = parts[0];
+                String s2 = new StringBuilder(parts[1]).reverse().toString();
+                Check_palindrome(sentence, s1, s2);
             } else {
                 String[] parts = {result.substring(0, mid + 1), result.substring(mid)};
-                String s1 = parts[0].replaceAll("[ ]", "");
-                String s2 = parts[1].replaceAll("[ ]", "");
-                String s3 = new StringBuilder(s2).reverse().toString();
-                Check_palindrome(sentence, s1, s3);
+                String s1 = parts[0];
+                String s2 = new StringBuilder(parts[1]).reverse().toString();
+                Check_palindrome(sentence, s1, s2);
             }
         }
     }
     public static void Check_palindrome(String sentence, String s1, String s2) {
+        System.out.println(s1);
+        System.out.println(s2);
         if (s1.equals(s2)) {
             System.out.print("\"" + sentence + "\" is a palindrome!");
         } else {
