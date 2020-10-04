@@ -21,6 +21,7 @@ public class RomanNumerals {
                 System.out.print("M");
             }
             numeral = String.valueOf(Integer.parseInt(numeral)-(thousands-3)*1000);
+            l = numeral.length()-1;
         }
         for (int i = 0; i <= l; i++){
             sub(""+numeral.charAt(i), ""+ ones.charAt(l-i) + fives.charAt(l-i) + ones.charAt(l-i+1));
