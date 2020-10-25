@@ -31,9 +31,9 @@ public class PrimeFactors {
 
     public static long getNum(){
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter integer greater than 1 (0 to termiante): ");
+        System.out.print("Enter integer greater than 1 (0 to terminate): ");
         while (!input.hasNextLong()){
-            System.out.print("Input must be an integer greater than 1 (0 to termiante): ");
+            System.out.print("Input must be an integer greater than 1 (0 to terminate): ");
             input.next();
         }
         long num = input.nextLong();

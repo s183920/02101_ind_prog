@@ -25,9 +25,15 @@ public class RandomWalk {
         Random stepGen = new Random();
 
 //        Setup StdDraw window
-        StdDraw.setXscale(-n, n);
-        StdDraw.setYscale(-n, n);
-        StdDraw.setPenRadius(2./1000); //kan man justere størrelsen smart?
+        double rad = 1./(n*2+1);
+        double s = n+n*2*rad;
+        StdDraw.setXscale(-s, s);
+        StdDraw.setYscale(-s, s);
+
+//        double rad = 1./(n*2+1);
+        StdDraw.setPenRadius(2./1000);
+        StdDraw.square(x,y,n+n*rad);
+        StdDraw.setPenRadius(rad);
 
 
         System.out.printf("Position = (%d, %d)\n", x, y);
