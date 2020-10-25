@@ -131,7 +131,13 @@ public class RaceTrack {
             System.out.println("You crashed in " + moves + " moves!");
             return false;
         }
-        if (carPosition[0] == x0/2 && y0/2 < carPosition[1]) {
+        if (carPosition[1] < 3*y0/4 && carPosition[1] > y0/4) {
+            if (carPosition[0] < 3*x0/4 && carPosition[0] > x0/4) {
+                System.out.println("You crashed in " + moves + " moves!");
+                return false;
+            }
+        }
+        if (carPosition[0] == x0/2 && y0/2 < carPosition[1] && moves > 3) {
             System.out.println("You won in " + moves + " moves!");
             return false;
         }
