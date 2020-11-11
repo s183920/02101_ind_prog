@@ -34,6 +34,7 @@ public class RandomWalk {
         StdDraw.setPenRadius(2./1000);
         StdDraw.square(x,y,n+n*rad);
         StdDraw.setPenRadius(rad);
+        
 
 
         System.out.printf("Position = (%d, %d)\n", x, y);
