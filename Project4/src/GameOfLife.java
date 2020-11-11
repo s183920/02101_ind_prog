@@ -103,16 +103,21 @@ public class GameOfLife {
     }
 
     // function to simulate n steps forward, with sleepTime time between each step
-    public void drawSimulation(int steps, int sleepTime){
+    public void drawSimulation(int sleepTime){
         StdDraw.setCanvasSize(500, 500);
         drawState();
         StdDraw.show(sleepTime);
-        for (int i = 0; i < steps; i++){
+        while(true){
+            int[][] prevState = state.clone();
             nextState();
             StdDraw.clear();
             drawState();
             StdDraw.show(sleepTime);
+            if (prevState == this.state){
+                break;
+            }
         }
-        StdDraw.show();
+//        StdDraw.clear();
+//        StdDraw.show();
     }
 }

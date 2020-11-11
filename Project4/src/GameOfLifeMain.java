@@ -4,8 +4,8 @@ public class GameOfLifeMain {
 //        int[][] state = {{1, 0, 1}, {0, 1, 1}, {0, 1, 0}};
 //        GameOfLife gol = new GameOfLife(state);
 
-        GameOfLife gol = new GameOfLife(10);
-        gol.drawSimulation(10, 100);
+        GameOfLife gol = new GameOfLife(20);
+        gol.drawSimulation(1000);
 
 
     }
