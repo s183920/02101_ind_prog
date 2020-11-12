@@ -1,6 +1,7 @@
 import javax.print.DocFlavor;
 import java.awt.*;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
 public class GameOfLife {
 //    private int size;
@@ -30,6 +31,18 @@ public class GameOfLife {
             }
         }
         this.state = initialState;
+    }
+
+    public GameOfLife(String fileName) {
+        int[][] state = readState(fileName);
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                if (state[i][j] != 0 && state[i][j] != 1){throw new IllegalArgumentException("State had an illegal value, must be 0 or 1!");}
+            }
+        }
+        if (state == null){throw new IllegalArgumentException("File was empty");}
+        this.state = state;
+        this.n = state.length;
     }
 
     // set state method, sets the state of given cell to newState
@@ -108,16 +121,52 @@ public class GameOfLife {
         drawState();
         StdDraw.show(sleepTime);
         while(true){
-            int[][] prevState = state.clone();
+            int[][] prevState = state.clone(); // copy previous state before overwriting with next state
             nextState();
             StdDraw.clear();
             drawState();
             StdDraw.show(sleepTime);
+            // break loop when board does not change
             if (prevState == this.state){
                 break;
             }
         }
 //        StdDraw.clear();
 //        StdDraw.show();
+    }
+
+    public int[][] readState(String fileName){
+        int[][] state;
+        try {
+            File f = new File(fileName);
+            Scanner fScanner = new Scanner(f);
+
+
+            if (fScanner.hasNextLine()){
+                // get first row of matrix, to determine n and init state matrix
+                String[] row1 = fScanner.nextLine().split(" ");
+                state = new int[row1.length][row1.length];
+                for (int i = 0; i < row1.length; i++){
+                    state[0][i] = Integer.parseInt(row1[i]);
+                }
+                // read final n-1 lines
+                int rowIdx = 1;
+                while (fScanner.hasNextLine()) {
+                    String[] row = fScanner.nextLine().split(" ");
+                    for (int i = 0; i < row.length; i++){
+                        state[rowIdx][i] = Integer.parseInt(row[i]);
+                    }
+                    rowIdx++;
+                }
+                fScanner.close();
+                return state;
+            }
+            // return null array if file did not have any lines
+            return null;
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+            return null;
+        }
     }
 }
