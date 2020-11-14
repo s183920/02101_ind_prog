@@ -11,14 +11,11 @@ public class Artikel {
         this.ref = ref;
     }
 
-    public void newArtikel(String[] newForfattere, String newTitel) {
-        this.forfattere = newForfattere;
-        this.titel = newTitel;
-    }
     public void setReferenceliste(String newRef) {
         ref = newRef;
-    }
-    public String getForfattere(){
+    } // Konstrukør til at sætte refrenceliste
+    public String getTitel() {return this.titel;} //toString metode til at få titlen
+    public String getForfattere(){ //toString metode til at få forfatteren(e)
         String result = "- " + forfattere[0];
         if (forfattere.length == 1) {
             result = result;
@@ -33,4 +30,5 @@ public class Artikel {
     public String toString(){
         return getForfattere() + " \"" + this.titel + "\". " + this.t.getTitle();
     }
+    public String getRef(){return this.ref;}
 }

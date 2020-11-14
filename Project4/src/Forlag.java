@@ -12,4 +12,5 @@ public class Forlag {
     public String getSted(){
         return sted;
     }
+    public String toString() {return "Forlaget " + navn + ", " + sted + ".";}
 }

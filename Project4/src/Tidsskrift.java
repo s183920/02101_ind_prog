@@ -18,5 +18,15 @@ public class Tidsskrift {
     public String getTitle(){
         return title;
     }
+    public String getIssn(){
+        String result = "";
+        if (issn.length() == 0){
+          result = "Der er ingen Issn for " + this.title +". ";
+        }
+        else {
+            result = this.issn;
+        }
+        return result;
+    }
 }
 
