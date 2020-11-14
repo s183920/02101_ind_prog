@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 
 public class GameOfLife {
-//    private int size;
     private int[][] state;
     private int n;
 
@@ -101,7 +100,6 @@ public class GameOfLife {
     }
 
     public void drawState(){
-//        StdDraw.setCanvasSize(1000,1000);
         double rad = 1./(n*2+1);
         StdDraw.setPenRadius(rad);
         StdDraw.setPenColor(Color.PINK);
@@ -117,7 +115,7 @@ public class GameOfLife {
 
     // function to simulate n steps forward, with sleepTime time between each step
     public void drawSimulation(int sleepTime){
-        StdDraw.setCanvasSize(500, 500);
+//        StdDraw.setCanvasSize(500, 500);
         drawState();
         StdDraw.show(sleepTime);
         while(true){
@@ -131,8 +129,6 @@ public class GameOfLife {
                 break;
             }
         }
-//        StdDraw.clear();
-//        StdDraw.show();
     }
 
     public int[][] readState(String fileName){
@@ -140,7 +136,6 @@ public class GameOfLife {
         try {
             File f = new File(fileName);
             Scanner fScanner = new Scanner(f);
-
 
             if (fScanner.hasNextLine()){
                 // get first row of matrix, to determine n and init state matrix
