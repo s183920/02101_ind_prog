@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class RaceTrack {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Size of map:");
-         int mapRadius = input.nextInt();
-        initiate_map(mapRadius, mapRadius);
-        StdDraw.point(mapRadius/2,mapRadius-2);
-        int[] carPosition = {mapRadius/2, mapRadius-2};
+        System.out.println("size of map:");
+         int xlength = input.nextInt();
+         int ylength = xlength;
+        initiate_map(xlength, ylength);
+        StdDraw.point(xlength/2,ylength-2);
+        int[] carPosition = {xlength/2, ylength-2};
         int[] speed = {0,0};
         int moves = 0;
         boolean running = true;
@@ -17,9 +18,9 @@ public class RaceTrack {
             int direction = input.nextInt();
             moves += 1;
             moveCar(direction, carPosition, speed);
-            running = checkStatus(mapRadius, mapRadius, carPosition, moves);
+            running = checkStatus(xlength, ylength, carPosition, moves);
         }
-        System.exit(0);
+         // System.exit(0);
     }
     public static void initiate_map(int x0, int y0) {
         StdDraw.setXscale(-5, x0+5);
@@ -137,7 +138,7 @@ public class RaceTrack {
                 return false;
             }
         }
-        if (carPosition[0] == x0/2 && y0/2 < carPosition[1] && moves > 3) {
+        if (carPosition[0] > x0/2 && y0/2 < carPosition[1] && moves > 5) {
             System.out.println("You won in " + moves + " moves!");
             return false;
         }
