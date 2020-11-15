@@ -1,4 +1,3 @@
-import javax.print.DocFlavor;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
@@ -39,16 +38,9 @@ public class GameOfLife {
                 if (state[i][j] != 0 && state[i][j] != 1){throw new IllegalArgumentException("State had an illegal value, must be 0 or 1!");}
             }
         }
-        if (state == null){throw new IllegalArgumentException("File was empty");}
+        if (state == null){throw new IllegalArgumentException("File was empty or does not exist");}
         this.state = state;
         this.n = state.length;
-    }
-
-    // set state method, sets the state of given cell to newState
-    public void setState(int x, int y, int newState){
-        if (newState != 0 && newState != 1){throw new IllegalArgumentException("State had an illegal value, must be 0 or 1!");}
-        if (x >= n || y >= n){throw new IllegalArgumentException("State " + x + ", " + y + "out of bounds for grid of size " + n + "x" + n);}
-        this.state[x][y] = newState;
     }
 
     //    toString method
@@ -63,12 +55,19 @@ public class GameOfLife {
         return printVal;
     }
 
+    // set state method, sets the state of given cell to newState
+    public void setState(int x, int y, int newState){
+        if (newState != 0 && newState != 1){throw new IllegalArgumentException("State had an illegal value, must be 0 or 1!");}
+        if (x >= n || y >= n){throw new IllegalArgumentException("State " + x + ", " + y + "out of bounds for grid of size " + n + "x" + n);}
+        this.state[x][y] = newState;
+    }
+
     // get number of alive neighbors
-    private int liveNeighbors(int x, int y){
+        private int liveNeighbors(int x, int y){
         int sum = 0;
         for (int i = x-1; i <= x+1; i++){
             for (int j = y-1; j <= y+1; j++){
-                // check that value is within boundaries as values outside ofgrid does not count towards live neighbors
+                // check that value is within boundaries as values outside of grid does not count towards live neighbors
                 if ((i != x || j != y) && i >= 0 && j >= 0 && i < n && j < n){
                     sum += state[i][j];
                 }
@@ -131,7 +130,7 @@ public class GameOfLife {
         }
     }
 
-    public int[][] readState(String fileName){
+    private int[][] readState(String fileName){
         int[][] state;
         try {
             File f = new File(fileName);
