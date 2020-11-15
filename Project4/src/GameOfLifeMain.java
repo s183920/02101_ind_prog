@@ -4,20 +4,40 @@ import java.util.*;
 
 public class GameOfLifeMain {
     public static void main(String[] args) {
-        // check simple example of 3x3 game
-//        int[][] state = {{1, 0, 1}, {0, 1, 1}, {0, 1, 0}};
-//        GameOfLife gol = new GameOfLife(state);
+        Scanner choice = new Scanner(System.in);
+        System.out.print("Please enter the number of a test case. If none of the below integers are chosen, a random n x n grid is used, where n is between 3 and 10 \n" +
+                "1 : 3x3 board from description \n" +
+                "2 : acorn example \n" +
+                "3 : glider_gun example \n" +
+                "4 : pentadecathlon example \n" +
+                "5 : pulsar example \n" +
+                "6 : toad example \n" +
+                "Choice: ");
 
-//        GameOfLife gol = new GameOfLife(5);
-//        gol.drawSimulation(1000);
-//        int[][] state = readState("gol/toad.gol");
-//        for (int i = 0; i < state.length; i++){
-//            System.out.println(Arrays.toString(state[i]));
-//        }
-
-        GameOfLife gol2 = new GameOfLife("gol/pentadecathlon.gol");
-////        System.out.println(gol2);
-        gol2.drawSimulation(100);
+        while (choice.hasNextInt()){
+            int chosen = choice.nextInt();
+            GameOfLife gol;
+           if (chosen == 1){
+                int[][] state = {{1, 0, 1}, {0, 1, 1}, {0, 1, 0}};
+                gol = new GameOfLife(state);
+            } else if (chosen == 2){
+                gol = new GameOfLife("gol/acorn.gol");
+            } else if (chosen == 3){
+                gol = new GameOfLife("gol/glider_gun.gol");
+            } else if (chosen == 4){
+                gol = new GameOfLife("gol/pentadecathlon.gol");
+            } else if (chosen == 5){
+                gol = new GameOfLife("gol/pulsar.gol");
+            } else if (chosen == 6){
+                gol = new GameOfLife("gol/toad.gol");
+            } else {
+                Random rand = new Random();
+                int n = rand.nextInt(7)+3;
+                gol = new GameOfLife(n);
+                System.out.println("A " + n + " x " + n + " grid was used!");
+            }
+            gol.drawSimulation(100);
+        }
     }
 }
 
