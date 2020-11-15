@@ -4,13 +4,14 @@ public class Artikel {
     private Tidsskrift t;
     private String ref;
 
+    // Constructor
     public Artikel(String[] forfattere, String titel, Tidsskrift t){
         this.forfattere = forfattere;
         this.titel = titel;
         this.t = t;
         this.ref = ref;
     }
-
+    // funktion til at opdatere Refrence
     public void setReferenceliste(String newRef) {
         ref = newRef;
     } // Konstrukør til at sætte refrenceliste
@@ -27,6 +28,7 @@ public class Artikel {
         }
         return result + ":";
     }
+    // toString metoder
     public String toString(){
         return getForfattere() + " \"" + this.titel + "\". " + this.t.getTitle();
     }

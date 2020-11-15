@@ -3,10 +3,12 @@ public class ArtikelTest {
         Forlag f = new Forlag("University Press", "Denmark");
         Tidsskrift t1 = new Tidsskrift("Journal of logic", "", f);
         Tidsskrift t2 = new Tidsskrift("Brain", "", f);
+        t1.setIssn("98887");
         Artikel a = new Artikel(new String[]{"A. Abe", "A. Turing"}, "A", t1);
         Artikel b = new Artikel(new String[]{"B. Bim"}, "B", t1);
         a.setReferenceliste("B");
         b.setReferenceliste("Boogalo");
+
         System.out.println(f.toString());
         printTidsskrift(t1,t2,f);
         printArtikler(a, b);

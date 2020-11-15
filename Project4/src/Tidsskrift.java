@@ -3,6 +3,7 @@ public class Tidsskrift {
     private String issn;
     private Forlag f;
 
+    // Constructor
     public Tidsskrift(String title, String issn, Forlag f) {
         this.title = title;
         this.issn = issn;
@@ -24,7 +25,7 @@ public class Tidsskrift {
           result = "Der er ingen Issn for " + this.title +". ";
         }
         else {
-            result = this.issn;
+            result = "ISSN for "+ this.title + ": " + this.issn +". ";
         }
         return result;
     }
