@@ -30,7 +30,7 @@ public class Complex {
         return new Complex(this.re*other.re - this.im*other.im, this.im*other.re +this.re*other.im);
     }
     public String toString(){
-        return this.re +" + " + this.im + "i";
+        return this.im >= 0 ? this.re +" + " + this.im + "i" : this.re +" " + this.im + "i";
     }
 
 }
