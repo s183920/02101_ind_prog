@@ -3,8 +3,8 @@ public class Staff {
         Person a = new Person("adam");
         Boss b = new Boss("bill");
         Programmer c = new Programmer("carl");
-        JavaProgrammer d = new JavaProgrammer("dean", "Hello World");
-        JavaProgrammer e = new JavaProgrammer("eric", "Test program 1");
+        JavaProgrammers d = new JavaProgrammers("dean", "Hello World");
+        JavaProgrammers e = new JavaProgrammers("eric", "Test program 1");
 
         System.out.println(a);
         System.out.println(b);

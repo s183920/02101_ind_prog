@@ -1,4 +1,4 @@
-public class Boss extends Person {
+public class Boss extends Persons180820 {
     Boss(String name){
         super(name);
     }

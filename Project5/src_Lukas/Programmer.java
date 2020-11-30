@@ -1,4 +1,4 @@
-public class Programmer extends Person{
+public class Programmer extends Person {
 
     public Programmer(String name){
         super(name);
