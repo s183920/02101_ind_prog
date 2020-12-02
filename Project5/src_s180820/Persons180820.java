@@ -6,6 +6,6 @@ public class Persons180820 {
     }
     @Override
     public String toString() {
-        return "Person " + name;
+        return this.getClass().getName().replace("s180820", " ") + name;
     }
 }
